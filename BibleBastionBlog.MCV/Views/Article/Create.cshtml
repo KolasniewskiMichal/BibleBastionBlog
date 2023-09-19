@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Dodaj Artykuł";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<html>
+<head>
+    <script src="https://cdn.tiny.cloud/1/w58yj3h3aomrikuxxtagsfvhaglp2xzxosnrzvhxteqr8gsj/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <form action="/Article/Create" method="post">
+                    <div class="form-group mb-3">
+                        <label class="control-label" for="Title">Title</label>
+                        <input class="form-control" type="text" id="Title" name="Title" />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="control-label" for="Category">Category</label>
+                        <input class="form-control" type="text" id="Category" name="Category" />
+                        <select class="form-select" aria-label="Default select example">
+
+                    </div>
+                    <div class="form-group mb-3">
+                        <textarea id="Content" class="ckeditor" name="Content"></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <script>
+            tinymce.init({
+                selector: 'textarea',
+            });
+        </script>
+</body>
+</html>
