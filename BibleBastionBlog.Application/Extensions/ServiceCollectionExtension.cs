@@ -9,6 +9,7 @@ namespace BibleBastionBlog.Application.Extensions
         public static void AddApplication(this IServiceCollection services)
         {
             services.AddScoped<IArticleService, ArticleService>();
+            services.AddScoped<ICategoryService, CategoryService>();
             services.AddAutoMapper(typeof(BibleBastionBlogMappingProfile));
 
         }

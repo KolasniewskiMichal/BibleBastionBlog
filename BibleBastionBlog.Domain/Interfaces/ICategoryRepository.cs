@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace BibleBastionBlog.Domain.Interfaces
 {
-    public interface IArticleRepository
+    public interface ICategoryRepository
     {
-        Task Create(Article article);        
-        Task<IEnumerable<Article>> GetAll();
-
+        Task Create(Category category);
+        Task<IEnumerable<Category>> GetAllCategories();
     }
 }

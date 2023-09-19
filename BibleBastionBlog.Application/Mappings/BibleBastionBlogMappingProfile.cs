@@ -14,11 +14,15 @@ namespace BibleBastionBlog.Application.Mappings
     {
         public BibleBastionBlogMappingProfile()
         {
-            //Tworzenie Artykułu
-            CreateMap<ArticleDto, Article>()
-                .ReverseMap()
-                .ForMember(dest => dest.IsNew, conf => conf.MapFrom(model => DateTime.Now.Day - 7 > model.CreatedAt.Day ? true : false))
-                .ForMember(dest => dest.IsUpdated, conf => conf.MapFrom(model => model.UpdatedAt.HasValue ? true : false));
+            CreateMap<ArticleDto, Article>();
+
+            CreateMap<Article, ArticleDto>();
+
+            CreateMap<CategoryDto, Category>();
+
+            CreateMap<Category, CategoryDto>();
+
         }
+
     }
 }

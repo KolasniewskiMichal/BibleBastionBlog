@@ -1,5 +1,4 @@
-﻿using BibleBastionBlog.Application.Dtos;
-using BibleBastionBlog.Domain.Entities;
+﻿using BibleBastionBlog.Domain.Entities;
 using BibleBastionBlog.Domain.Interfaces;
 using BibleBastionBlog.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -11,21 +10,22 @@ using System.Threading.Tasks;
 
 namespace BibleBastionBlog.Infrastructure.Repositores
 {
-    public class ArticleRepository : IArticleRepository
+    public class CategoryRepository : ICategoryRepository
     {
         private readonly BibleBastionBlogDbContext _dbContext;
-        public ArticleRepository(BibleBastionBlogDbContext dbContext)
+        public CategoryRepository(BibleBastionBlogDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task Create(Article article)
+        public async Task Create(Category category)
         {
-            _dbContext.Add(article);
+            _dbContext.Add(category);
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Article>> GetAll() => await _dbContext.Articles.ToListAsync();
-            
+        public async Task<IEnumerable<Category>> GetAllCategories() 
+            => await _dbContext.Categories.ToListAsync();
+ 
     }
 }

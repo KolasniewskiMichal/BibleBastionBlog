@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BibleBastionBlog.Domain.Entities
+namespace BibleBastionBlog.Application.Dtos
 {
-    public class Category : Entity
+    public class CategoryDto
     {
-        public string Name { get; set; } = default!;
+        public string Name { get; set; }
     }
 }

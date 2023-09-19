@@ -12,14 +12,14 @@ namespace BibleBastionBlog.MCV.Controllers
             _articleService = articleService;
         }
 
-        [HttpGet]
-        public ActionResult GetAllCategories()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var articles = await _articleService.GetAll();
+            return View(articles);
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }

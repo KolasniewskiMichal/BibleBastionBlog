@@ -20,6 +20,7 @@ namespace BibleBastionBlog.Infrastructure.Extensions
                 configuration.GetConnectionString("BibleBastion")));
 
             services.AddScoped<IArticleRepository, ArticleRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
         }
     }
 }

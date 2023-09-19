@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using BibleBastionBlog.Application.Dtos;
 using BibleBastionBlog.Domain.Entities;
-using BibleBastionBlog.Domain.Helpers;
 using BibleBastionBlog.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -32,5 +31,12 @@ namespace BibleBastionBlog.Application.Services
            
         }
 
+        public async Task<IEnumerable<Article>> GetAll()
+        {
+            var articles = _articleRepository.GetAll();
+            var dtos = _mapper.Map<IEnumerable<Article>>(articles);
+
+            return dtos;
+        }
     }
 }

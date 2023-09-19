@@ -12,9 +12,6 @@ namespace BibleBastionBlog.Application.Dtos
     {
         public string Title { get; set; }
         public string Content { get; set; }
-        public string Category { get; set; }
-        public bool IsNew { get; set; }
-        public bool IsUpdated { get; set; }
         public string? EncodedTitle { get; set; }
 
     }

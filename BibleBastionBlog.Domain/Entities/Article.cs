@@ -15,8 +15,6 @@ namespace BibleBastionBlog.Domain.Entities
         [AllowHtml]
         public string Content { get; set; }
         public string EncodedTitle { get; private set; }
-        public int CategoryId { get; set; } 
-        public virtual Category Category { get; set; }
         public void EncodeTitle() => EncodedTitle = Title.ToLower().Replace(" ", "-");
     }
 }

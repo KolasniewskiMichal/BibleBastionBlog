@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BibleBastionBlog.Infrastructure.Migrations
 {
     [DbContext(typeof(BibleBastionBlogDbContext))]
-    [Migration("20230915214947_Initial")]
-    partial class Initial
+    [Migration("20230919210457_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,9 +32,6 @@ namespace BibleBastionBlog.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -61,8 +58,6 @@ namespace BibleBastionBlog.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Articles");
                 });
@@ -134,17 +129,6 @@ namespace BibleBastionBlog.Infrastructure.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("BibleBastionBlog.Domain.Entities.Article", b =>
-                {
-                    b.HasOne("BibleBastionBlog.Domain.Entities.Category", "Category")
-                        .WithMany("Articles")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
             modelBuilder.Entity("BibleBastionBlog.Domain.Entities.Comment", b =>
                 {
                     b.HasOne("BibleBastionBlog.Domain.Entities.Article", "Article")
@@ -154,11 +138,6 @@ namespace BibleBastionBlog.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Article");
-                });
-
-            modelBuilder.Entity("BibleBastionBlog.Domain.Entities.Category", b =>
-                {
-                    b.Navigation("Articles");
                 });
 #pragma warning restore 612, 618
         }
